@@ -1,0 +1,50 @@
+<h1><%= @student.name %></h1>
+<h2>Email: <%= @student.email %></h2>
+<h2>School: <%= @student.school.name %></h2>
+
+<% if @student != @current_student%>
+    <%= form_tag friendships_path do %>
+        <%= hidden_field_tag :followee_id, @student.id %>
+        <%= submit_tag "Follow" %>
+    <% end %>
+<% else %>
+<h3>Following:</h3>
+    <ul>
+        <% @current_student.following_students.each do |student| %>
+            <li><%= link_to student.username, student_path(student) %></li>
+        <% end %>
+    </ul><br>
+<h3>Followers</h3>
+    <ul>
+        <% @current_student.followed_students.each do |student| %>
+            <li><%= link_to student.username, student_path(student) %></li>
+        <% end %>
+    </ul>    
+<% end %>
+
+<h3>Current Courses:</h3>
+<ul><% if @current_student.student_courses.count > 0 %>
+        <% @current_student.student_courses.each do |student_course| %>
+            <li>Course Number: <%= link_to student_course.course.name, course_path(student_course.course) %></li>
+            <% student_course.course.school_courses.each do |sc| %>
+                <p>Taught by: <%= sc.teacher %></p>
+            <% end %>
+        <% end %>
+    <% end %>
+</ul>
+<br>
+
+<h3>Completed Courses:</h3>
+<ul>
+<% @current_student.student_courses.each do |sc|%>
+    <% if sc.completed %>
+        <li><%= sc.course.name %> - Grade: <%= sc.grade %></li>
+    <% end %>
+<% end %>
+</ul>
+<br>
+
+
+
+<%= button_to 'Delete Student', student_path(@student), method: :delete %>
+<%= button_to 'Edit Student', edit_student_path(@student), method: :get %>

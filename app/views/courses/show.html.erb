@@ -1,0 +1,14 @@
+<h1>Course: <%= @course.name %></h1>
+<h3>Taught in: </h3>
+    <ul><% @course.school_courses.each do |school_course| %>
+        <li><%= link_to school_course.school.name, school_path(school_course.school) %></li>
+    <% end %>
+    </ul><br>
+
+    <%= form_for @school_course do |f|%>
+        <%= f.hidden_field :school_id, :value => @current_student.school.id %>
+        <%= f.hidden_field :course_id, :value => @course.id %>
+        <%= submit_tag "Assign to my school" %>
+    <% end %>
+
+<%# button_to "Assign Course to School", new_school_course_path, method: :get %>

@@ -1,0 +1,15 @@
+<h1><%= @school.name %></h1>
+<h2>Location: <%= @school.location %></h2>
+
+<h3>Courses offered:</h3>
+    <ul> <% @school.school_courses.each do |school_course| %>
+        <li><%= link_to school_course.course.name, course_path(school_course.course) %> - Taught By:<%= school_course.teacher %> 
+        <%= form_for @student_course do |f|%>
+            <%= f.hidden_field :student_id, :value => @current_student.id %>
+            <%= f.hidden_field :course_id, :value => school_course.course.id %>
+            <%= submit_tag "Enroll" %>
+        <% end %>
+        </li>
+        <% end %>
+    </ul>
+
