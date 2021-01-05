@@ -1,5 +1,5 @@
 class Student < ApplicationRecord
-    has_many :student_courses
+    has_many :student_courses, dependent: :destroy
     has_many :courses, through: :student_courses
 
     has_many :followed_students, foreign_key: :follower_id, class_name: 'Friendship'
@@ -12,6 +12,8 @@ class Student < ApplicationRecord
 
     validates :name, :username, :email, presence: true
     validates :username, :email, uniqueness: true 
+    validates :password, length: {minimum: 6, maximum: 20}
+    validates :password_confirmation, presence: true
 
     has_secure_password
 end

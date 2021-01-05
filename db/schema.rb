@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2021_01_04_165201) do
     t.integer "student_id"
     t.integer "course_id"
     t.boolean "completed"
+    t.integer "school_course_id"
     t.integer "grade"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

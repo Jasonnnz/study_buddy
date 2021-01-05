@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   resources :friendships, only: [:create, :destroy]
   resources :school_courses, only: [:new, :create]
-  resources :student_courses, only: [:new, :create, :destroy]
+  resources :student_courses, only: [:new, :create, :destroy, :edit, :update]
   resources :schools
   resources :courses
   resources :students

@@ -3,11 +3,11 @@ class StudentCoursesController < ApplicationController
     def new
         @student_course = StudentCourse.new
         @students = Student.all 
-        @courses = Course.all 
+        @courses = Course.all
+        redirect_to student_path(@current_student)
     end
 
-    def create
-        student_course_params = params.require(:student_course).permit(:student_id, :completed, :grade, :course_id) 
+    def create 
         @student_course = @current_student.student_courses.create(student_course_params)
         if @student_course.valid?
             redirect_to student_path(@current_student)
@@ -17,33 +17,25 @@ class StudentCoursesController < ApplicationController
         end
     end
 
-    # private 
+    def edit
+        @student_course = StudentCourse.find(params[:id])
+    end
 
-    # def student_course_params
-    #     params.require(:student_course).permit(:student_id, :course_id, :completed, :grade)
-    # end
+    def update
+        @student_course = StudentCourse.find(params[:id])
+        if @student_course.update(student_course_params)
+            redirect_to student_path(@current_student)
+        else
+            flash[:errors] = @student_course.errors.full_messages
+            redirect_to edit_student_course_path
+        end
+    end
 
-    # class FavoritesController < ApplicationController
+    private 
 
-    #     def index   
-    #         @favorites = @current_student.favorites
-    #     end
-    
-    #     def new
-    #         @favorite = Favorite.new
-    #         @students = Student.all
-    #         @words = Word.all - @current_student.words
-    #     end
-    
-    #     def create
-    #         # byebug
-    #         favorite_params = params.require(:favorite).permit(:priority_level, :word_id)
-    
-    #         @favorite = @current_student.favorites.create(favorite_params)
-    #         # student = Student.find(params[:favorite][:student_id])
-    #         redirect_to student_path(@current_student)
-    #     end
-    
-    # end
+    def student_course_params
+        params.require(:student_course).permit(:student_id, :course_id, :completed, :grade, :school_course_id)
+    end
+
 
 end

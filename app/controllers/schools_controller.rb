@@ -8,6 +8,7 @@ class SchoolsController < ApplicationController
     
     def show
         @student_course = StudentCourse.new
+        
     end
 
     def new

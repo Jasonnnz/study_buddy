@@ -1,3 +1,5 @@
+<h1><%= @course.name %></h1>
+
 <% if flash[:errors] %>
     <% flash[:errors].each do |error| %>
         <%= error %>
@@ -5,9 +7,9 @@
 <% end %>
 
 <%= form_for @school_course do |f| %>
-    <%= f.collection_select :school_id, @schools, :id, :name %><br>
-    <%= f.collection_select :course_id, @courses, :id, :name %><br>
+    <%= f.hidden_field :school_id, :value => @current_student.school.id %><br>
+    <%= f.hidden_field :course_id, :value => session[:course_id] %><br>
     <%= f.label :teacher %>
     <%= f.text_field :teacher %><br>
-    <%= f.submit "Enroll"%>
+    <%= f.submit "Add Course"%>
 <% end %>

@@ -8,6 +8,7 @@ class CoursesController < ApplicationController
     
     def show
         @school_course = SchoolCourse.new
+        session[:course_id] = params[:id]
     end
 
     def new

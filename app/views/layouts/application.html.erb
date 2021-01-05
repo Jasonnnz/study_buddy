@@ -13,10 +13,11 @@
     <% if logged_in? %>
       <nav>
         <ul>
+            <li class="nav-tabs first-tab"><%= link_to "Students", students_path %></li>
             <li class="nav-tabs first-tab"><%= link_to "Schools", schools_path %></li>
             <li class="nav-tabs first-tab"><%= link_to "Courses", courses_path %></li>
-            <li class="nav-tabs"><%= link_to "Enroll in Course", new_student_course_path %></li>
             WELCOME: <%= link_to @current_student.name, student_path(@current_student) %> 
+            <li class="nav-tabs"><%= link_to "My School", school_path(@current_student.school) %></li>
             <%= button_to "LOG OUT", logout_path, method: :delete %>
           </ul>
       </nav>

@@ -4,6 +4,7 @@ class SchoolCoursesController < ApplicationController
         @school_course = SchoolCourse.new
         @schools = School.all
         @courses = Course.all
+        @course = Course.find(session[:course_id])
     end
 
     def create 
