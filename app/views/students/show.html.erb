@@ -27,8 +27,9 @@
 <ul><% if @current_student.student_courses.count > 0 %>
         <% @current_student.student_courses.each do |student_course| %>
             <% if !student_course.completed %>
-                <li>Course Number: <%= link_to student_course.course.name, course_path(student_course.course) %> 
-                <%= button_to "Complete Course", edit_student_course_path(student_course), method: :get %></li>
+                <li>Course Number: <%= link_to student_course.course.name, course_path(student_course.course) %><br><br> 
+                <%= button_to "Complete Course", edit_student_course_path(student_course), method: :get %><br>
+                <%= button_to "Remove Course", student_course_path(student_course), method: :delete %></li>
                 <% student_course.course.school_courses.each do |sc| %>
                     <% if sc.course_id == student_course.course_id && sc.school_id == student_course.student.school.id %>
                         <p>Taught by: <%= sc.teacher %></p>

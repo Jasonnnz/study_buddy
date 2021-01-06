@@ -19,6 +19,6 @@ class SessionsController < ApplicationController
 
     def logout
         session[:student_id] = nil 
-        redirect_to login_path
+        redirect_to '/'
     end
 end

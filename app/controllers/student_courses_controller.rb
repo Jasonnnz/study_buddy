@@ -13,7 +13,7 @@ class StudentCoursesController < ApplicationController
             redirect_to student_path(@current_student)
         else
             flash[:errors] = @student_course.errors.full_messages
-            redirect_to new_student_course_path
+            redirect_to school_path(@current_student.school.id)
         end
     end
 
@@ -29,6 +29,12 @@ class StudentCoursesController < ApplicationController
             flash[:errors] = @student_course.errors.full_messages
             redirect_to edit_student_course_path
         end
+    end
+
+    def destroy
+        @student_course = StudentCourse.find(params[:id])
+        @student_course.destroy 
+        redirect_to student_path(@current_student)
     end
 
     private 

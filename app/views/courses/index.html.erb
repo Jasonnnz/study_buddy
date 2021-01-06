@@ -1,9 +1,17 @@
 <h1>Courses: </h1>
 
-<ul>
-<% @courses.each do |course| %>
-    <li><%= link_to course.name, course_path(course) %></li>
-<% end %>
-</ul>
+<% if logged_in? %>
+    <ul>
+    <% @courses.each do |course| %>
+        <li><%= link_to course.name, course_path(course) %></li>
+    <% end %>
+    </ul>
 
-<%= button_to 'Create Course', new_course_path, method: :get %>
+    <%= button_to 'Create Course', new_course_path, method: :get %>
+<% else %>
+    <ul>
+    <% @courses.each do |course| %>
+        <li><%= link_to course.name, course_path(course) %></li>
+    <% end %>
+    </ul>
+<% end %>

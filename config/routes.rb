@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  get 'friendships/new'
+  # get 'friendships/new'
   # get 'friendships/create'
   
-  resources :friendships, only: [:create, :destroy]
+  get '/', to: 'welcome#index'
+
+  resources :friendships, only: [:new, :create, :destroy]
   resources :school_courses, only: [:new, :create]
   resources :student_courses, only: [:new, :create, :destroy, :edit, :update]
   resources :schools

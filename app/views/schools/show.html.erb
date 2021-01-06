@@ -1,20 +1,39 @@
 <h1><%= @school.name %></h1>
 <h2>Location: <%= @school.location %></h2>
 
-<h3>Courses offered:</h3>
-    <ul> <% @school.school_courses.each do |school_course| %>
-        <li><%= link_to school_course.course.name, course_path(school_course.course) %> - Taught By:<%= school_course.teacher %> 
-        <% if @current_student.school.id == @school.id%>
-            <%= form_for @student_course do |f|%>
-                <%= f.hidden_field :student_id, :value => @current_student.id %>
-                <%= f.hidden_field :course_id, :value => school_course.course.id %>
-                <%= f.hidden_field :school_course_id, :value => school_course.id %>
-                <%= submit_tag "Add Course" %>
+
+<% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+        <strong><%= error %></strong>
+    <% end %>
+<% end %>
+<% if logged_in? %>
+    <h3>Courses offered:</h3>
+        <ul> <% @school.school_courses.each do |school_course| %>
+            <li><%= link_to school_course.course.name, course_path(school_course.course) %> - Taught By:<%= school_course.teacher %> 
+            <% if @current_student.school.id == @school.id%>
+                <%= form_for @student_course do |f|%>
+                    <%= f.hidden_field :student_id, :value => @current_student.id %>
+                    <%= f.hidden_field :course_id, :value => school_course.course.id %>
+                    <%= f.hidden_field :school_course_id, :value => school_course.id %>
+                    <%= submit_tag "Add Course" %>
+                <% end %>
+            <% end %><br>
+            Students taking the course:
+            <ul> <% school_course.student_courses.each do |student_course| %>
+                <% if student_course.school_course_id == school_course.id %>
+                    <li><%= link_to student_course.student.name, student_path(student_course.student) %></li>
+                <% end %>
+            <% end %> </ul>
+            </li>
             <% end %>
+        </ul>
+<% else %>
+    <h3>Courses offered:</h3>
+        <ul> <% @school.school_courses.each do |school_course| %>
+            <li><%= link_to school_course.course.name, course_path(school_course.course) %> - Taught By:<%= school_course.teacher %> 
         <% end %>
-        </li>
-        <% end %>
-    </ul>
+<% end %>
 
 
 <%# button_to "Add Course", new_student_course_path, method: :get %>

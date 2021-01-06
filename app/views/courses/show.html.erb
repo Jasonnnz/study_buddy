@@ -1,8 +1,17 @@
 <h1>Course: <%= @course.name %></h1>
-<h3>Taught in: </h3>
-    <ul><% @course.school_courses.each do |school_course| %>
-        <li><%= link_to school_course.school.name, school_path(school_course.school) %></li>
-    <% end %>
-    </ul><br>
 
-<%= button_to "Assign Course to School", new_school_course_path, method: :get %>
+<% if logged_in? %>
+    <h3>Taught in: </h3>
+        <ul><% @course.school_courses.each do |school_course| %>
+            <li><%= link_to school_course.school.name, school_path(school_course.school) %></li>
+        <% end %>
+        </ul><br>
+
+    <%= button_to "Assign Course to School", new_school_course_path, method: :get %>
+<% else %>
+    <h3>Taught in: </h3>
+        <ul><% @course.school_courses.each do |school_course| %>
+            <li><%= link_to school_course.school.name, school_path(school_course.school) %></li>
+        <% end %>
+        </ul><br>
+<% end %>

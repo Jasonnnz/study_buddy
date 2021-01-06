@@ -1,10 +1,20 @@
 <h1>Schools</h1>
-<ul>    
-    <% @schools.each do |school| %>
-    <li><%= link_to school.name, school_path(school) %> - <%= school.location %></li>
-    <% end %>
-</ul>
-<br>
-<%= button_to 'Create School', new_school_path, method: :get %>
+
+<% if logged_in?%>
+    <ul>    
+        <% @schools.each do |school| %>
+        <li><%= link_to school.name, school_path(school) %> - <%= school.location %></li>
+        <% end %>
+    </ul>
+    <br>
+    <%= button_to 'Create School', new_school_path, method: :get %>
+<% else %>
+    <ul>    
+        <% @schools.each do |school| %>
+        <li><%= link_to school.name, school_path(school) %> - <%= school.location %></li>
+        <% end %>
+    </ul>
+<% end %>
+
 
 
