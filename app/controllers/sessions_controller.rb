@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
     skip_before_action :authorized_to_see_page, only: [:login, :handle_login]
 
     def login
-        @error = flash[:error]
+        @error = flash[:login_error]
     end
 
     def handle_login
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
             session[:student_id] = @student.id
             redirect_to student_path(@student)
         else
-            flash[:error] = "Password or Username incorrect"
+            flash[:login_error] = "Password or Username incorrect"
             redirect_to login_path 
         end 
     end

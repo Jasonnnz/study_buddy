@@ -3,7 +3,19 @@ class StudentsController < ApplicationController
     before_action :find_student, only: [:show, :edit, :update, :destroy]
 
     def index
-        @students = Student.all
+        
+        if params[:search] 
+            @students = Student.search(params[:search])
+            if @students.nil? || @students.count == Student.all.count
+                flash[:error] = "Could not find a student with that name"
+                @students = Student.all
+            end
+        else
+            @students = Student.all
+        end
+        # if @students.count == Student.all.count
+        #     flash[:error] = "Could not find a student with that name"
+        # end
     end
     
     def show
@@ -60,6 +72,6 @@ class StudentsController < ApplicationController
     end
 
     def student_params
-        params.require(:student).permit(:name, :username, :password, :email, :img_url, :school_id, :password_confirmation)
+        params.require(:student).permit(:name, :username, :password, :email, :img_url, :school_id, :password_confirmation, :search)
     end
 end

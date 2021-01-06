@@ -3,12 +3,27 @@ class SchoolsController < ApplicationController
     before_action :find_school, only: [:show, :edit, :update, :destroy]
     
     def index
-        @schools = School.all
+        if logged_in?
+            @current_student = Student.find(session[:student_id])
+        end
+        if params[:search]
+            @schools = School.search(params[:search])
+            flash[:error] = ""
+            if @schools.nil? || @schools.count == School.all.count 
+                flash[:error] = "Could not find a school with that name"
+                @schools = School.all
+            end
+        else
+            flash[:error] = ""
+            @schools = School.all 
+        end
     end
     
     def show
-        @student_course = StudentCourse.new
-        
+        if logged_in?
+            @current_student = Student.find(session[:student_id])
+        end
+        @student_course = StudentCourse.new 
     end
 
     def new
@@ -49,7 +64,7 @@ class SchoolsController < ApplicationController
     end
 
     def school_params
-        params.require(:school).permit(:name, :location)
+        params.require(:school).permit(:name, :location, :search)
     end
 
 end

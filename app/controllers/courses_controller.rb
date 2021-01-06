@@ -3,10 +3,26 @@ class CoursesController < ApplicationController
     before_action :find_course, only: [:show, :edit, :update, :destroy]
     
     def index
-        @courses = Course.all
+        if logged_in?
+            @current_student = Student.find(session[:student_id])
+        end
+        if params[:search] 
+            @courses = Course.search(params[:search])
+            flash[:error] = ""
+            if @courses.nil? || @courses.count == Course.all.count
+                flash[:error] = "Could not find a course with that name"
+                @courses = Course.all
+            end
+        else
+            flash[:error] = ""
+            @courses = Course.all
+        end
     end
     
     def show
+        if logged_in?
+            @current_student = Student.find(session[:student_id])
+        end
         @school_course = SchoolCourse.new
         session[:course_id] = params[:id]
     end
@@ -49,7 +65,7 @@ class CoursesController < ApplicationController
     end
 
     def course_params
-        params.require(:course).permit(:name)
+        params.require(:course).permit(:name, :search)
     end
 
 end

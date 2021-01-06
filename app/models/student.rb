@@ -16,4 +16,22 @@ class Student < ApplicationRecord
     validates :password_confirmation, presence: true
 
     has_secure_password
+
+    def self.search(search)
+        if search 
+            student = Student.find_by(name: search)
+            if student 
+                self.where(name: student.name)
+            end
+            
+            # if student 
+            #     self.where(name: student.name)
+            # else
+            #     Student.all
+            # end
+        else
+            Student.all
+        end
+    end
+
 end
