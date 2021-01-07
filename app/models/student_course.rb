@@ -12,7 +12,7 @@ class StudentCourse < ApplicationRecord
     end
 
     def diff_school?
-        self.student.school.id != self.school_course_id 
+        self.student.school.id != self.school_course.school_id 
     end
 
 end

@@ -2,12 +2,18 @@
 <h2>Email: <%= @student.email %></h2>
 <h2>School: <%= @student.school.name %></h2>
 
+<% if @student.img_url.attached? %>
+    <p><%= image_tag @student.img_url, style:"width: 500px; height: 500px;"%></p>
+<% end %>
+
 <% if @student != @current_student%>
     <%= form_tag friendships_path do %>
         <%= hidden_field_tag :followee_id, @student.id %>
         <%= submit_tag "Follow" %>
     <% end %>
 <% else %>
+
+
 <h3>Followers:</h3>
     <ul>
         <% @current_student.followers.each do |student| %>

@@ -8,7 +8,7 @@ class School < ApplicationRecord
 
     def self.search(search)
         if search 
-            school = School.find_by(name: search)
+            school = School.find_by(name: search.strip)
             if school 
                 self.where(name: school.name)
             end

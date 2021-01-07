@@ -9,7 +9,7 @@ class Course < ApplicationRecord
 
     def self.search(search)
         if search 
-            course = Course.find_by(name: search)
+            course = Course.find_by(name: search.strip)
             if course
                 self.where(name: course.name)
             end

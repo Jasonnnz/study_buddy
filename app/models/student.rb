@@ -15,11 +15,13 @@ class Student < ApplicationRecord
     validates :password, length: {minimum: 6, maximum: 20}
     validates :password_confirmation, presence: true
 
+    has_one_attached :img_url, :dependent => :destroy 
+
     has_secure_password
 
     def self.search(search)
         if search 
-            student = Student.find_by(name: search)
+            student = Student.find_by(name: search.strip)
             if student 
                 self.where(name: student.name)
             end

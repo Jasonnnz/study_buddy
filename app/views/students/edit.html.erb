@@ -19,5 +19,7 @@
     <%= f.password_field :password_confirmation %><br>
     <%= f.label :school_id %>
     <%= f.collection_select :school_id, @schools, :id, :name %><br>
+    <%= f.label "Image" %>
+    <%= f.file_field :img_url %><br>
     <%= f.submit %>
 <% end %>
