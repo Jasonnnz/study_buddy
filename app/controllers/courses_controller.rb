@@ -9,14 +9,26 @@ class CoursesController < ApplicationController
         if params[:search] 
             @courses = Course.search(params[:search])
             flash[:error] = ""
-            if @courses.nil? || @courses.count == Course.all.count
-                flash[:error] = "Could not find a course with that name"
+            if @courses.count == 0
+                flash[:error] = "Could not find a Course with that name"
                 @courses = Course.all
+            else
+                @courses
             end
         else
-            flash[:error] = ""
             @courses = Course.all
         end
+        # if params[:search] 
+        #     @courses = Course.search(params[:search])
+        #     flash[:error] = ""
+        #     if @courses.nil? || @courses.count == Course.all.count
+        #         flash[:error] = "Could not find a course with that name"
+        #         @courses = Course.all
+        #     end
+        # else
+        #     flash[:error] = ""
+        #     @courses = Course.all
+        # end
     end
     
     def show

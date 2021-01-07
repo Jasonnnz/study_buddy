@@ -6,17 +6,29 @@ class SchoolsController < ApplicationController
         if logged_in?
             @current_student = Student.find(session[:student_id])
         end
-        if params[:search]
+        if params[:search] 
             @schools = School.search(params[:search])
             flash[:error] = ""
-            if @schools.nil? || @schools.count == School.all.count 
-                flash[:error] = "Could not find a school with that name"
+            if @schools.count == 0
+                flash[:error] = "Could not find a School with that name"
                 @schools = School.all
+            else
+                @schools
             end
         else
-            flash[:error] = ""
-            @schools = School.all 
+            @schools = School.all
         end
+        # if params[:search]
+        #     @schools = School.search(params[:search])
+        #     flash[:error] = ""
+        #     if @schools.nil? || @schools.count == School.all.count 
+        #         flash[:error] = "Could not find a school with that name"
+        #         @schools = School.all
+        #     end
+        # else
+        #     flash[:error] = ""
+        #     @schools = School.all 
+        # end
     end
     
     def show

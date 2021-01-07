@@ -19,21 +19,20 @@ class Student < ApplicationRecord
 
     has_secure_password
 
+    # def self.search(search)
+    #     if search 
+    #         student = Student.find_by(name: search.strip.capitalize)
+    #         if student 
+    #             self.where(name: student.name)
+    #         end
+    #     else
+    #         Student.all
+    #     end
+    # end
+
     def self.search(search)
-        if search 
-            student = Student.find_by(name: search.strip)
-            if student 
-                self.where(name: student.name)
-            end
-            
-            # if student 
-            #     self.where(name: student.name)
-            # else
-            #     Student.all
-            # end
-        else
-            Student.all
-        end
+        students = self.all  
+        arr_students = students.select {|student| student.name.downcase.include?(search.downcase)}
     end
 
 end

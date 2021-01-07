@@ -6,15 +6,24 @@ class StudentsController < ApplicationController
         
         if params[:search] 
             @students = Student.search(params[:search])
-            if @students.nil? || @students.count == Student.all.count
+            flash[:error] = ""
+            if @students.count == 0
                 flash[:error] = "Could not find a student with that name"
                 @students = Student.all
+            else
+                @students
             end
         else
             @students = Student.all
         end
-        # if @students.count == Student.all.count
-        #     flash[:error] = "Could not find a student with that name"
+        # if params[:search] 
+        #     @students = Student.search(params[:search])
+        #     if @students.nil? || @students.count == Student.all.count
+        #         flash[:error] = "Could not find a student with that name"
+        #         @students = Student.all
+        #     end
+        # else
+        #     @students = Student.all
         # end
     end
     

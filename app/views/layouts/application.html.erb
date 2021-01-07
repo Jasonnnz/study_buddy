@@ -11,27 +11,35 @@
 
   <body>
     <% if logged_in? %>
-      <nav>
-        <ul>
-            <li class="nav-tabs first-tab"><%= link_to "Students", students_path %></li>
-            <li class="nav-tabs first-tab"><%= link_to "Schools", schools_path %></li>
-            <li class="nav-tabs first-tab"><%= link_to "Courses", courses_path %></li>
-            WELCOME: <%= link_to @current_student.name, student_path(@current_student) %> 
-            <li class="nav-tabs"><%= link_to "My School", school_path(@current_student.school) %></li>
-            <%= button_to "LOG OUT", logout_path, method: :delete %>
-          </ul>
-      </nav>
+      <div class="nav-bar">
+        <nav>
+          <ul>
+              <li class="nav-tabs first-tab"><%= link_to "StudyBuddy", '/'%></li>
+              <li class="nav-tabs"><%= link_to "Students", students_path %></li>
+              <li class="nav-tabs"><%= link_to "Schools", schools_path %></li>
+              <li class="nav-tabs"><%= link_to "Courses", courses_path %></li>
+              <li class="nav-tabs right">WELCOME: <%= link_to @current_student.name, student_path(@current_student)%></li>
+              <li class="nav-tabs right"><%= link_to "My School", school_path(@current_student.school) %></li>
+              <li class="nav-tabs right"><%= button_to "LOG OUT", logout_path, method: :delete %></li>
+            </ul>
+        </nav>
+      </div>
     <% else %>
-      <nav> 
-        <ul>
-          <li class="nav-tabs first-tab"><%= link_to "Schools", schools_path %></li>
-          <li class="nav-tabs first-tab"><%= link_to "Courses", courses_path %></li>
-          <%= link_to "LOGIN HERE", login_path %>
-          <li class="nav-tabs right"><%= link_to "Sign Up", new_student_path %></li>
-        </ul>
-      </nav>
+      <div class="nav-bar">
+        <nav> 
+          <ul>
+            <li class="nav-tabs first-tab"><%= link_to "StudyBuddy", '/'%></li>
+            <li class="nav-tabs"><%= link_to "Schools", schools_path %></li>
+            <li class="nav-tabs"><%= link_to "Courses", courses_path %></li>
+            <li class="nav-tabs right"><%= link_to "LOGIN HERE", login_path %></li>
+            <li class="nav-tabs right"><%= link_to "Sign Up", new_student_path %></li>
+          </ul>
+        </nav>
+      </div>
     <% end %>
-    <%= yield %>
+    <div class='container'>
+      <%= yield %>
+    </div>
   </body>
 </html>
 

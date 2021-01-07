@@ -13,3 +13,28 @@
  *= require_tree .
  *= require_self
  */
+
+h1 {
+    color: blue;
+}
+
+div.nav-bar {
+    background-color: green;
+
+}
+
+nav {
+    width: 100vw;
+    height: 15vh;
+    background-color:pink;
+    /* border: 1px solid white; */
+}
+
+nav ul {
+   
+}
+
+nav ul li {
+    
+
+}
