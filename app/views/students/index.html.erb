@@ -1,18 +1,21 @@
-<h1>Students</h1>
+
 
 <% if flash[:error] %>
     <%= flash[:error]%>
 <% end %>
-
-<h4>Search for Student:</h4>
-    <%= form_tag(students_path, method: :get) do %>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search" %>
+<div class="search-bar-box">
+    <h4>Search for Student:</h4>
+        <%= form_tag(students_path, method: :get) do %>
+            <%= text_field_tag :search, params[:search] %><br><br>
+            <%= submit_tag "Search" %>
+        <% end %>
+</div>
+<div class="search-result-box">
+    <h1>Students</h1>
+    <ul>
+    <% @students.each do |student| %>
+        <li><%= link_to student.name, student_path(student) %></li>
     <% end %>
-
-<ul>
-<% @students.each do |student| %>
-    <li><%= link_to student.name, student_path(student) %></li>
-<% end %>
-</ul>
+    </ul>
+</div>
 

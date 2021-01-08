@@ -1,32 +1,38 @@
-<h1>Courses: </h1>
-
 <% if flash[:error] %>
     <%= flash[:error]%>
 <% end %>
 
 <% if logged_in? %>
-    <h4>Search for a Course:</h4>
-    <%= form_tag(courses_path, method: :get) do %>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search" %>
-    <% end %>
-    <ul>
-    <% @courses.each do |course| %>
-        <li><%= link_to course.name, course_path(course) %></li>
-    <% end %>
-    </ul>
-
+    <div class="search-bar-box">
+        <h4>Search for a Course:</h4>
+        <%= form_tag(courses_path, method: :get) do %>
+            <%= text_field_tag :search, params[:search] %><br><br>
+            <%= submit_tag "Search" %>
+        <% end %> <br><br>
     <%= button_to 'Create Course', new_course_path, method: :get %>
+    </div>
+    <div class="search-result-box">
+        <h1>Courses: </h1>
+        <ul>
+        <% @courses.each do |course| %>
+            <li><%= link_to course.name, course_path(course) %></li>
+        <% end %>
+        </ul>
+    </div>
 <% else %>
-    <h4>Search for a Course:</h4>
-    <%= form_tag(courses_path, method: :get) do %>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search" %>
-    <% end %>
-    
-    <ul>
-    <% @courses.each do |course| %>
-        <li><%= link_to course.name, course_path(course) %></li>
-    <% end %>
-    </ul>
+    <div class="search-bar-box">
+        <h4>Search for a Course:</h4>
+        <%= form_tag(courses_path, method: :get) do %>
+            <%= text_field_tag :search, params[:search] %><br><br>
+            <%= submit_tag "Search" %>
+        <% end %>
+    </div>
+    <div class="search-result-box">
+        <h1>Courses: </h1>
+        <ul>
+        <% @courses.each do |course| %>
+            <li><%= link_to course.name, course_path(course) %></li>
+        <% end %>
+        </ul>
+    </div>
 <% end %>

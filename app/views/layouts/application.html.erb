@@ -11,31 +11,35 @@
 
   <body>
     <% if logged_in? %>
-      <div class="nav-bar">
-        <nav>
-          <ul>
-              <li class="nav-tabs first-tab"><%= link_to "StudyBuddy", '/'%></li>
+      <nav>
+        <ul>
+            <div class="left-links">
+              <li class="first-tab"><%= link_to "StudyBuddy", '/'%></li>
               <li class="nav-tabs"><%= link_to "Students", students_path %></li>
               <li class="nav-tabs"><%= link_to "Schools", schools_path %></li>
               <li class="nav-tabs"><%= link_to "Courses", courses_path %></li>
-              <li class="nav-tabs right">WELCOME: <%= link_to @current_student.name, student_path(@current_student)%></li>
+            </div>
+            <div class="right-links">
+              <li class="nav-tabs right">Welcome:  <%= link_to @current_student.name, student_path(@current_student)%></li>
               <li class="nav-tabs right"><%= link_to "My School", school_path(@current_student.school) %></li>
               <li class="nav-tabs right"><%= button_to "LOG OUT", logout_path, method: :delete %></li>
-            </ul>
-        </nav>
-      </div>
+            </div>
+          </ul>
+      </nav>
     <% else %>
-      <div class="nav-bar">
-        <nav> 
-          <ul>
-            <li class="nav-tabs first-tab"><%= link_to "StudyBuddy", '/'%></li>
+      <nav> 
+        <ul>
+          <div class="left-links">
+            <li class="first-tab"><%= link_to "StudyBuddy", '/'%></li>
             <li class="nav-tabs"><%= link_to "Schools", schools_path %></li>
             <li class="nav-tabs"><%= link_to "Courses", courses_path %></li>
-            <li class="nav-tabs right"><%= link_to "LOGIN HERE", login_path %></li>
+          </div>  
+          <div class="right-links">
+            <li class="nav-tabs right"><%= link_to "Login", login_path %></li>
             <li class="nav-tabs right"><%= link_to "Sign Up", new_student_path %></li>
-          </ul>
-        </nav>
-      </div>
+          </div>
+        </ul>
+      </nav>
     <% end %>
     <div class='container'>
       <%= yield %>

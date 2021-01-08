@@ -1,34 +1,41 @@
-<h1>Schools</h1>
 
 <% if flash[:error] %>
     <%= flash[:error]%>
 <% end %>
 
 <% if logged_in? %>
-    <h4>Search for School:</h4>
-    <%= form_tag(schools_path, method: :get) do %>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search" %>
-    <% end %>
-    <ul>    
-        <% @schools.each do |school| %>
-        <li><%= link_to school.name, school_path(school) %> - <%= school.location %></li>
-        <% end %>
-    </ul>
-    <br>
+    <div class="search-bar-box">    
+        <h4>Search for School:</h4>
+        <%= form_tag(schools_path, method: :get) do %>
+            <%= text_field_tag :search, params[:search] %><br><br>
+            <%= submit_tag "Search" %>
+        <% end %> <br><br>
     <%= button_to 'Create School', new_school_path, method: :get %>
+    </div>
+    <div class="search-result-box">
+        <h1>Schools</h1>
+        <ul>    
+            <% @schools.each do |school| %>
+            <li><%= link_to school.name, school_path(school) %> - <%= school.location %></li>
+            <% end %>
+        </ul>
+    </div>
 <% else %>
-    <h4>Search for School:</h4>
-    <%= form_tag(schools_path, method: :get) do %>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search" %>
-    <% end %>
-
-    <ul>    
-        <% @schools.each do |school| %>
-        <li><%= link_to school.name, school_path(school) %> - <%= school.location %></li>
+    <div class="search-bar-box">
+        <h4>Search for School:</h4>
+        <%= form_tag(schools_path, method: :get) do %>
+            <%= text_field_tag :search, params[:search] %><br><br>
+            <%= submit_tag "Search" %>
         <% end %>
-    </ul>
+    </div>
+    <div class="search-result-box">
+        <h1>Schools</h1>
+        <ul>    
+            <% @schools.each do |school| %>
+            <li><%= link_to school.name, school_path(school) %> - <%= school.location %></li>
+            <% end %>
+        </ul>
+    </div>
 <% end %>
 
 

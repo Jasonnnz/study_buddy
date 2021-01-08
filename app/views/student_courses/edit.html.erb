@@ -1,4 +1,4 @@
-<h1><%= @student_course.course.name %></h1>
+<div class="page-title"><h1><%= @student_course.course.name %></h1>
 
 <% if flash[:errors] %>
     <% flash[:errors].each do |error| %>
@@ -11,8 +11,9 @@
     <%= f.hidden_field :course_id, :value => @student_course.course_id %><br>
     <%= f.hidden_field :school_course_id, :value => @student_course.school_course_id %><br>
     <%= f.label :completed %>
-    <%= f.check_box :completed %>
-    <%= f.label :grade %> (Optional Unless Course Completed)
-    <%= f.number_field :grade, min: 60, max: 100 %>
+    <%= f.check_box :completed %><br><br>
+    <%= f.label :grade %> 
+    <%= f.number_field :grade, min: 60, max: 100 %><br><br>
     <%= f.submit "Complete Course"%>
 <% end %>
+</div>

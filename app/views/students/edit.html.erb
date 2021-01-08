@@ -1,4 +1,4 @@
-<h1>Edit Student</h1>
+<div class="page-title"><h1>Edit Student</h1>
 
 <% if flash[:errors] %>
     <% flash[:errors].each do |error| %>
@@ -23,3 +23,4 @@
     <%= f.file_field :img_url %><br>
     <%= f.submit %>
 <% end %>
+</div>

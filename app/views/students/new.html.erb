@@ -1,4 +1,4 @@
-<h1>Create Student</h1>
+<div class="page-title"><h1>Sign Up</h1>
 
 <% if flash[:errors] %>
     <% flash[:errors].each do |error| %>
@@ -8,18 +8,19 @@
 
 <%= form_for @student do |f| %>
     <%= f.label :name %>
-    <%= f.text_field :name %><br>
+    <%= f.text_field :name %><br><br>
     <%= f.label :email %>
-    <%= f.text_field :email %><br>
+    <%= f.text_field :email %><br><br>
     <%= f.label :username %>
-    <%= f.text_field :username%><br>
+    <%= f.text_field :username%><br><br>
     <%= f.label :password %>
-    <%= f.password_field :password %><br>
+    <%= f.password_field :password %><br><br>
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %><br><br>
     <%= f.label :school_id %>
-    <%= f.collection_select :school_id, @schools, :id, :name %><br>
+    <%= f.collection_select :school_id, @schools, :id, :name %><br><br>
     <%= f.label "Image" %>
-    <%= f.file_field :img_url %><br>
-    <%= f.submit "Create Student"%>
+    <%= f.file_field :img_url %><br><br>
+    <%= f.submit "Sign Up"%>
 <% end %>
+</div>

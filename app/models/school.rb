@@ -18,6 +18,6 @@ class School < ApplicationRecord
     # end
     def self.search(search)
         schools = self.all  
-        arr_schools = schools.select {|school| school.name.downcase.include?(search.downcase)}
+        arr_schools = schools.select {|school| school.name.downcase.include?(search.strip.downcase)}
     end
 end

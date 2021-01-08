@@ -19,6 +19,6 @@ class Course < ApplicationRecord
     # end
     def self.search(search)
         courses = self.all  
-        arr_courses = courses.select {|course| course.name.downcase.include?(search.downcase)}
+        arr_courses = courses.select {|course| course.name.downcase.include?(search.strip.downcase)}
     end
 end
