@@ -27,15 +27,26 @@ nav {
     background-color:pink;
     display: flex;
     justify-content: space-around;
+    height: 84px;
     /* align-items: center; */
-    /* border: 1px solid white; */
+    /* border: 1px solid black; */
 }
 
 nav ul {
     /* display: flex; */
     width: 100vw; 
+    /* height: 40px; */
+    /* border: 1px solid black; */
 }
 
+nav ul li {
+    /* border: 1px solid black; */
+}
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+}
 .first-tab {
     display: flex;
     float: left;
@@ -55,7 +66,7 @@ nav ul {
 .right-links {
     display: flex;
     float: right;
-    padding: 10px;
+    padding: 0px;
     align-items: center;
     /* border: solid; */
 }
@@ -63,7 +74,7 @@ nav ul {
 .left-links {
     display: flex;
     float: left;
-    padding: 10px;
+    padding: 0px;
     align-items: center;
 }
 
@@ -84,7 +95,8 @@ nav ul {
 .page-title {
     /* padding-bottom: 50px; */
     /* padding-left: 50px; */
-    padding-left: 35vw;
+    /* padding-left: 35vw; */
+    margin: auto;
 }
 
 .page-content {
@@ -113,16 +125,17 @@ body {
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    width: 100vw;
+    width: 70vw;
     height: 100vh;
+    margin: 0 auto;
     }
     
-.student-info { padding-left: 300px; grid-area: 1 / 1 / 2 / 3; }
-.student-img { padding-right: 300px; grid-area: 1 / 3 / 2 / 5; }
-.followers {padding-left: 300px; grid-area: 2 / 1 / 3 / 3; }
-.following {padding-right: 300px; grid-area: 2 / 3 / 3 / 5; }
-.current-courses {padding-left: 300px; grid-area: 3 / 1 / 4 / 3; }
-.completed-courses {padding-right: 300px; grid-area: 3 / 3 / 4 / 5; }
+.student-info { margin: 10px; grid-area: 1 / 1 / 2 / 3; box-shadow: 0px 0px 10px rgba(0,0,0,0.3); text-align: center;}
+.student-img { margin: 10px; grid-area: 1 / 3 / 2 / 5; border: 1px solid black;}
+.followers  {grid-area: 2 / 1 / 3 / 3; }
+.following { grid-area: 2 / 3 / 3 / 5; }
+.current-courses { grid-area: 3 / 1 / 4 / 3; }
+.completed-courses { grid-area: 3 / 3 / 4 / 5; }
 
 .student-img img {
     width: 300px;
@@ -131,4 +144,13 @@ body {
 
 input[type=submit] {
     width: 20em;  height: 2em;
+}
+
+.home-page {
+    /* justify-content: center; */
+    margin: auto;
+}
+
+.image-logo {
+    
 }

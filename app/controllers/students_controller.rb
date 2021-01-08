@@ -28,7 +28,7 @@ class StudentsController < ApplicationController
     end
     
     def show
-        # @teacher = @current_student.courses.
+        @friendship = Friendship.find_by(follower_id: @current_student.id, followee_id: @student.id)
     end
 
     def new

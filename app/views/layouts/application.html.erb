@@ -12,9 +12,9 @@
   <body>
     <% if logged_in? %>
       <nav>
+       <%= link_to image_tag("StudyBuddyLogo.png", size:"120x50"), '/', class:"image-logo" %>
         <ul>
             <div class="left-links">
-              <li class="first-tab"><%= link_to "StudyBuddy", '/'%></li>
               <li class="nav-tabs"><%= link_to "Students", students_path %></li>
               <li class="nav-tabs"><%= link_to "Schools", schools_path %></li>
               <li class="nav-tabs"><%= link_to "Courses", courses_path %></li>
@@ -28,9 +28,9 @@
       </nav>
     <% else %>
       <nav> 
+          <%= link_to image_tag("StudyBuddyLogo.png", size:"120x50"), '/', class:"image-logo" %>
         <ul>
           <div class="left-links">
-            <li class="first-tab"><%= link_to "StudyBuddy", '/'%></li>
             <li class="nav-tabs"><%= link_to "Schools", schools_path %></li>
             <li class="nav-tabs"><%= link_to "Courses", courses_path %></li>
           </div>  
