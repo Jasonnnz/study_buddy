@@ -61,7 +61,7 @@
     </div>
     <div class="current-courses"> <h3>Current Courses:</h3>
         <% if @current_student == @student %>
-        <ul><% if @current_student.student_courses.count > 0 %>
+        <ul class="current"><% if @current_student.student_courses.count > 0 %>
                 <% @current_student.student_courses.each do |student_course| %>
                     <% if !student_course.completed %>
                         <li>Course Number: <%= link_to student_course.course.name, course_path(student_course.course) %><br><br> 
@@ -77,7 +77,7 @@
             <% end %>
         </ul>
         <% else %>
-            <ul><% if @student.student_courses.count > 0 %>
+            <ul class="current"><% if @student.student_courses.count > 0 %>
                 <% @student.student_courses.each do |student_course| %>
                     <% if !student_course.completed %>
                         <li>Course Number: <%= link_to student_course.course.name, course_path(student_course.course) %></li>
@@ -95,20 +95,20 @@
     <div class="completed-courses"> 
         <h3>Completed Courses:</h3>
         <% if @current_student == @student %>
-            <ul>
+            <ul class="completed" >
             <% @current_student.student_courses.each do |sc|%>
                 <% if sc.completed %>
-                    <li><%= sc.course.name %> - Grade: <%= sc.grade %></li>
-                    <p>Taken at: <%= sc.school_course.school.name %></p>
+                    <li><%= link_to sc.course.name, course_path(sc.course) %> - Grade: <%= sc.grade %></li>
+                    <p>Taken at: <%= link_to sc.school_course.school.name, school_path(sc.school_course.school) %></p>
                 <% end %>
             <% end %>
             </ul>
         <% else %>
-            <ul>
+            <ul class="completed">
             <% @student.student_courses.each do |sc|%>
                 <% if sc.completed %>
-                    <li><%= sc.course.name %> - Grade: <%= sc.grade %></li>
-                    <p>Taken at: <%= sc.school_course.school.name %></p>
+                    <li><%= link_to sc.course.name, course_path(sc.course) %> - Grade: <%= sc.grade %></li>
+                    <p>Taken at: <%= link_to sc.school_course.school.name, school_path(sc.school_course.school) %></p>
                 <% end %>
             <% end %>
             </ul>

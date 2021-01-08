@@ -1,9 +1,9 @@
-<% if flash[:error] %>
-    <%= flash[:error]%>
-<% end %>
 
 <% if logged_in? %>
     <div class="search-bar-box">
+        <% if flash[:error] %>
+            <p class="error"><%= flash[:error]%></p>
+        <% end %>
         <h4>Search for a Course:</h4>
         <%= form_tag(courses_path, method: :get) do %>
             <%= text_field_tag :search, params[:search] %><br><br>
@@ -21,6 +21,9 @@
     </div>
 <% else %>
     <div class="search-bar-box">
+        <% if flash[:error] %>
+            <p class="error"><%= flash[:error]%></p>
+        <% end %>
         <h4>Search for a Course:</h4>
         <%= form_tag(courses_path, method: :get) do %>
             <%= text_field_tag :search, params[:search] %><br><br>

@@ -15,7 +15,28 @@
  */
 
 h1 {
-    color: blue;
+    color: rgb(105, 131, 214);
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+h2 {
+    color: rgb(105, 131, 214);
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+h3 {
+    color: rgb(105, 131, 214);
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+h4 {
+    color: rgb(105, 131, 214);
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+p {
+    color: rgb(105, 131, 214);
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 nav {
@@ -35,6 +56,7 @@ nav {
 nav ul {
     /* display: flex; */
     width: 100vw; 
+    padding: 0;
     /* height: 40px; */
     /* border: 1px solid black; */
 }
@@ -44,7 +66,7 @@ nav ul li {
 }
 nav ul li a {
     text-decoration: none;
-    color: black;
+    color:rgb(105, 131, 214);
     font-size: 25px;
 }
 .first-tab {
@@ -131,11 +153,11 @@ body {
     }
     
 .student-info { margin: 10px; grid-area: 1 / 1 / 2 / 3; box-shadow: 0px 0px 10px rgba(0,0,0,0.3); text-align: center;}
-.student-img { margin: 10px; grid-area: 1 / 3 / 2 / 5; border: 1px solid black;}
-.followers  {grid-area: 2 / 1 / 3 / 3; }
-.following { grid-area: 2 / 3 / 3 / 5; }
-.current-courses { grid-area: 3 / 1 / 4 / 3; }
-.completed-courses { grid-area: 3 / 3 / 4 / 5; }
+.student-img { margin: 10px; grid-area: 1 / 3 / 2 / 5; box-shadow: 0px 0px 10px rgba(0,0,0,0.3); text-align: center;}
+.followers  { margin: 10px; grid-area: 2 / 1 / 3 / 3; box-shadow: 0px 0px 10px rgba(0,0,0,0.3); text-align: center; }
+.following { margin: 10px; grid-area: 2 / 3 / 3 / 5; box-shadow: 0px 0px 10px rgba(0,0,0,0.3); text-align: center; }
+.current-courses { margin: 10px; grid-area: 3 / 1 / 4 / 3; box-shadow: 0px 0px 10px rgba(0,0,0,0.3); text-align: center;}
+.completed-courses { margin: 10px; grid-area: 3 / 3 / 4 / 5; box-shadow: 0px 0px 10px rgba(0,0,0,0.3); text-align: center;}
 
 .student-img img {
     width: 300px;
@@ -152,5 +174,57 @@ input[type=submit] {
 }
 
 .image-logo {
-    
+    margin: auto;
+    padding-left: 10px;
+}
+
+a {
+    text-decoration: none;
+    color:rgb(240, 149, 164);
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+p {
+    color:rgb(105, 131, 214);
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.followers a {
+    text-decoration: none;
+    margin: auto;
+}
+
+.followers li {
+    list-style: none;
+    margin: auto;
+}
+
+.following a {
+    text-decoration: none;
+    margin: auto;
+}
+
+.following li {
+    list-style: none;
+    margin: auto;
+}
+
+.current li {
+    list-style: none;
+}
+
+.completed li {
+    list-style: none;
+}
+ul {
+    padding: 0px;
+}
+
+li {
+    font-family: 'Josefin Sans', sans-serif;
+    color:rgb(105, 131, 214);
+}
+
+.error {
+    color: red;
 }

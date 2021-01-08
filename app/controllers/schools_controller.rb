@@ -16,6 +16,7 @@ class SchoolsController < ApplicationController
                 @schools
             end
         else
+            flash[:error] = ""
             @schools = School.all
         end
         # if params[:search]

@@ -6,6 +6,8 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
     <%# javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -20,7 +22,7 @@
               <li class="nav-tabs"><%= link_to "Courses", courses_path %></li>
             </div>
             <div class="right-links">
-              <li class="nav-tabs right">Welcome:  <%= link_to @current_student.name, student_path(@current_student)%></li>
+              <li class="nav-tabs right"><%= link_to @current_student.name, student_path(@current_student)%></li>
               <li class="nav-tabs right"><%= link_to "My School", school_path(@current_student.school) %></li>
               <li class="nav-tabs right"><%= button_to "LOG OUT", logout_path, method: :delete %></li>
             </div>

@@ -1,9 +1,7 @@
-
-
-<% if flash[:error] %>
-    <%= flash[:error]%>
-<% end %>
 <div class="search-bar-box">
+    <% if flash[:error] %>
+        <p class="error"><%= flash[:error]%></p>
+    <% end %>
     <h4>Search for Student:</h4>
         <%= form_tag(students_path, method: :get) do %>
             <%= text_field_tag :search, params[:search] %><br><br>

@@ -14,6 +14,7 @@ class StudentsController < ApplicationController
                 @students
             end
         else
+            flash[:error] = ""
             @students = Student.all
         end
         # if params[:search] 
@@ -71,7 +72,7 @@ class StudentsController < ApplicationController
 
     def destroy
         @student.destroy 
-        redirect_to students_path
+        redirect_to '/'
     end
 
     private

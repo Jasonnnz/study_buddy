@@ -4,7 +4,7 @@
 
 <% if flash[:errors] %>
     <% flash[:errors].each do |error| %>
-        <strong><%= error %></strong>
+        <p class="error"><%= error %></p>
     <% end %>
 <% end %>
 
@@ -12,7 +12,7 @@
     <div class="page-content">
         <h3>Courses offered:</h3>
             <ul> <% @school.school_courses.each do |school_course| %>
-                <li><%= link_to school_course.course.name, course_path(school_course.course) %> - Taught By:<%= school_course.teacher %> 
+                <li><%= link_to school_course.course.name, course_path(school_course.course) %> - Taught By: <%= school_course.teacher %> 
                 <% if @current_student.school.id == @school.id%>
                     <%= form_for @student_course do |f|%>
                         <%= f.hidden_field :student_id, :value => @current_student.id %>
